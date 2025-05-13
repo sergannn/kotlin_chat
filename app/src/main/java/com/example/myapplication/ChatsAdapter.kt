@@ -16,7 +16,7 @@ class ChatsAdapter(private val onClick: (Chat) -> Unit) :
 
         fun bind(chat: Chat) {
             binding.chatName.text = chat.name
-            binding.lastMessage.text = chat.lastMessage ?: "No messages yet"
+          //  binding.lastMessage.text = chat.lastMessage ?: ""
 
             // Использование Glide для загрузки аватара чата
             //Glide.with(binding.root)

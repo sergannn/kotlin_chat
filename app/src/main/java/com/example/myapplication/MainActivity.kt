@@ -5,15 +5,28 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 
 class MainActivity : AppCompatActivity() {
 
 
+    override fun onBackPressed() {
+        val messagesContainer = findViewById<FrameLayout>(R.id.messages_container)
 
+        if (messagesContainer?.visibility == View.VISIBLE) {
+            // Возврат к списку чатов
+            supportFragmentManager.popBackStack("messages", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            messagesContainer.visibility = View.GONE
+            findViewById<FrameLayout>(R.id.chats_container).visibility = View.VISIBLE
+        } else {
+            super.onBackPressed()
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

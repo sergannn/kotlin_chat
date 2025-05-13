@@ -66,9 +66,9 @@ class ChatListFragment : Fragment() {
         viewModel.chats.observe(viewLifecycleOwner) { response ->
             when {
                 response.success -> {
-                    binding.progressBar.visibility = View.GONE
+                    //binding.progressBar.visibility = View.GONE
                     adapter.submitList(response.data)
-                    binding.emptyState.visibility =
+                    //binding.emptyState.visibility =
                         if (response.data.isNullOrEmpty()) View.VISIBLE else View.GONE
 
                     // Auto-show first chat in tablet mode
@@ -77,10 +77,10 @@ class ChatListFragment : Fragment() {
                     }
                 }
                 response.error != null -> {
-                    binding.progressBar.visibility = View.GONE
+                    //binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), response.error, Toast.LENGTH_SHORT).show()
                 }
-                else -> binding.progressBar.visibility = View.VISIBLE
+                //else -> binding.progressBar.visibility = View.VISIBLE
             }
         }
     }
